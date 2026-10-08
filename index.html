@@ -65,97 +65,137 @@
             background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 24px 24px;
         }
+        /* Mobile touch and responsive helpers */
+        html {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .touch-scroll-x {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
     </style>
 </head>
-<body class="bg-[#090d16] text-slate-200 font-sans antialiased selection:bg-sky-500 selection:text-white">
+<body class="bg-[#090d16] text-slate-200 font-sans antialiased selection:bg-sky-500 selection:text-white overflow-x-hidden">
 
     <!-- Top Navigation Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090d16]/85 border-b border-slate-800/80">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090d16]/90 border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <a href="#hero" class="flex items-center space-x-3 group">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 p-[2px] transition group-hover:scale-105">
+                <a href="#hero" class="flex items-center space-x-2.5 sm:space-x-3 group">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 p-[2px] transition group-hover:scale-105 shrink-0">
                         <img src="https://avatars.githubusercontent.com/u/108502392?v=4" 
                              alt="Girish Lade" 
                              onerror="this.src='https://placehold.co/100x100/1e293b/38bdf8?text=GL'"
                              class="w-full h-full rounded-full object-cover">
                     </div>
-                    <div>
-                        <span class="font-bold text-white tracking-wide text-base group-hover:text-sky-400 transition">Girish Lade</span>
-                        <span class="block text-xs font-mono text-slate-400">@girishlade111</span>
+                    <div class="truncate">
+                        <span class="font-bold text-white tracking-wide text-sm sm:text-base group-hover:text-sky-400 transition block leading-tight">Girish Lade</span>
+                        <span class="block text-[11px] sm:text-xs font-mono text-slate-400 leading-tight">@girishlade111</span>
                     </div>
                 </a>
             </div>
 
             <!-- Desktop Nav Links -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-                <a href="#beliefs" class="hover:text-sky-400 transition">Core Beliefs</a>
-                <a href="#trajectory" class="hover:text-sky-400 transition">Trajectory</a>
-                <a href="#ecosystem" class="hover:text-sky-400 transition">LadeStack</a>
-                <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
-                <a href="#tech-stack" class="hover:text-sky-400 transition">Tech</a>
-                <a href="#activity" class="hover:text-sky-400 transition">GitHub Stats</a>
-                <a href="#connect" class="hover:text-sky-400 transition">Connect</a>
+            <nav class="hidden lg:flex items-center space-x-5 xl:space-x-6 text-sm font-medium text-slate-300">
+                <a href="#beliefs" class="hover:text-sky-400 transition py-1">Core Beliefs</a>
+                <a href="#trajectory" class="hover:text-sky-400 transition py-1">Trajectory</a>
+                <a href="#ecosystem" class="hover:text-sky-400 transition py-1">LadeStack</a>
+                <a href="#projects" class="hover:text-sky-400 transition py-1">Projects</a>
+                <a href="#tech-stack" class="hover:text-sky-400 transition py-1">Tech</a>
+                <a href="#activity" class="hover:text-sky-400 transition py-1">GitHub Stats</a>
+                <a href="#connect" class="hover:text-sky-400 transition py-1">Connect</a>
             </nav>
 
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2 sm:space-x-3">
                 <a href="https://github.com/girishlade111" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-xs font-mono text-sky-400 border border-slate-700 transition">
+                   class="inline-flex items-center justify-center space-x-1.5 px-3 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 active:scale-95 text-xs font-mono text-sky-400 border border-slate-700 transition min-h-[38px]">
                     <i class="fa-brands fa-github text-sm"></i>
                     <span class="hidden sm:inline">Follow</span>
                 </a>
                 <button onclick="copyEmailToClipboard()" 
-                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs transition shadow-sm">
+                        class="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 active:scale-95 text-slate-950 font-semibold text-xs transition shadow-sm min-h-[38px]">
                     <i class="fa-regular fa-envelope"></i>
-                    <span>Get in Touch</span>
+                    <span class="hidden xs:inline">Get in Touch</span>
+                    <span class="xs:hidden">Contact</span>
+                </button>
+                <!-- Mobile Hamburger Toggle Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" 
+                        aria-label="Toggle navigation menu"
+                        class="lg:hidden w-10 h-10 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white active:scale-95 transition">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-base"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Mobile Collapsible Navigation Menu Drawer -->
+        <div id="mobileNavMenu" class="hidden lg:hidden border-t border-slate-800 bg-[#090d16]/95 backdrop-blur-xl px-4 py-4 space-y-2 transition-all duration-300">
+            <a href="#beliefs" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-solid fa-bolt text-amber-400 w-5"></i> Core Beliefs
+            </a>
+            <a href="#trajectory" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-solid fa-compass text-sky-400 w-5"></i> Trajectory
+            </a>
+            <a href="#ecosystem" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-solid fa-rocket text-purple-400 w-5"></i> LadeStack Ecosystem
+            </a>
+            <a href="#projects" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-solid fa-layer-group text-sky-400 w-5"></i> Featured Projects
+            </a>
+            <a href="#tech-stack" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-solid fa-code-merge text-emerald-400 w-5"></i> Tech Stack
+            </a>
+            <a href="#activity" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-brands fa-github-alt text-sky-400 w-5"></i> GitHub Stats
+            </a>
+            <a href="#connect" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 transition">
+                <i class="fa-solid fa-handshake text-rose-400 w-5"></i> Let's Connect
+            </a>
+        </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-16 sm:pb-20">
         <!-- Hero Section with GitHub Banner & Profile Layout -->
-        <section id="hero" class="relative rounded-2xl border border-slate-800 bg-[#0d1322] p-6 sm:p-8 lg:p-10 mb-12 overflow-hidden dot-grid shadow-2xl">
+        <section id="hero" class="relative rounded-2xl border border-slate-800 bg-[#0d1322] p-5 sm:p-8 lg:p-10 mb-8 sm:mb-12 overflow-hidden dot-grid shadow-2xl">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
                 <!-- Avatar and Title details -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                    <div class="relative group">
-                        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-sky-400 via-indigo-500 to-amber-400 shadow-xl">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6 w-full md:w-auto">
+                    <div class="relative group self-center sm:self-auto shrink-0">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-sky-400 via-indigo-500 to-amber-400 shadow-xl">
                             <img src="https://avatars.githubusercontent.com/u/108502392?v=4" 
                                  alt="Girish Balaso Lade"
                                  onerror="this.src='https://placehold.co/150x150/1e293b/38bdf8?text=Girish'"
                                  class="w-full h-full rounded-full object-cover">
                         </div>
-                        <span class="absolute bottom-1 right-1 flex h-5 w-5">
+                        <span class="absolute bottom-1 right-1 flex h-4 w-4 sm:h-5 sm:w-5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-5 w-5 bg-emerald-500 border-2 border-[#0d1322]"></span>
+                            <span class="relative inline-flex rounded-full h-4 w-4 sm:h-5 sm:w-5 bg-emerald-500 border-2 border-[#0d1322]"></span>
                         </span>
                     </div>
 
-                    <div>
+                    <div class="text-left">
                         <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Girish Lade</h1>
-                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-sky-400 border border-slate-700">20 y/o</span>
-                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">Founder</span>
+                            <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Girish Lade</h1>
+                            <span class="text-[11px] sm:text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-sky-400 border border-slate-700">20 y/o</span>
+                            <span class="text-[11px] sm:text-xs font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">Founder</span>
                         </div>
-                        <p class="text-base sm:text-lg font-medium text-amber-300/90 font-mono mb-2">
+                        <p class="text-sm sm:text-lg font-medium text-amber-300/90 font-mono mb-2">
                             Building systems | Founder @LadeStack | Tech Guy - Dev
                         </p>
-                        <p class="text-sm text-slate-400 max-w-xl leading-relaxed">
+                        <p class="text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
                             Hey I'm Girish, a 20yo dev obsessed with scaling, systems, clean engineering, and genuine impact. I code, learn, ship fast. Currently building products under <strong class="text-slate-200">LadeStack & beyond</strong>.
                         </p>
                         
                         <!-- Badges row from GitHub Profile -->
-                        <div class="flex flex-wrap items-center gap-2 mt-4">
-                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-solid fa-code text-sky-400 mr-1.5"></i>TypeScript</span>
-                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-python text-yellow-400 mr-1.5"></i>Python</span>
-                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-docker text-blue-400 mr-1.5"></i>Docker</span>
-                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-solid fa-dharmachakra text-sky-300 mr-1.5"></i>Kubernetes</span>
-                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-react text-cyan-400 mr-1.5"></i>React</span>
-                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-node text-green-400 mr-1.5"></i>Node.js</span>
+                        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5">
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-solid fa-code text-sky-400 mr-1.5"></i>TypeScript</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-python text-yellow-400 mr-1.5"></i>Python</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-docker text-blue-400 mr-1.5"></i>Docker</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-solid fa-dharmachakra text-sky-300 mr-1.5"></i>Kubernetes</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-react text-cyan-400 mr-1.5"></i>React</span>
+                            <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-node text-green-400 mr-1.5"></i>Node.js</span>
                         </div>
                     </div>
                 </div>
@@ -723,8 +763,8 @@
             </div>
 
             <!-- Interactive Contribution Grid Simulation -->
-            <div class="p-5 rounded-xl bg-slate-900/90 border border-slate-800 mb-8">
-                <div class="flex items-center justify-between mb-4">
+            <div class="p-4 sm:p-5 rounded-xl bg-slate-900/90 border border-slate-800 mb-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
                     <span class="text-xs font-mono text-slate-300 font-semibold">Contributions in the last year</span>
                     <div class="flex items-center space-x-1.5 text-[11px] font-mono text-slate-400">
                         <span>Less</span>
@@ -737,8 +777,14 @@
                     </div>
                 </div>
 
-                <!-- 52-week Simulated Contribution Matrix -->
-                <div class="overflow-x-auto pb-2">
+                <!-- Mobile swipe indicator banner -->
+                <div class="lg:hidden flex items-center justify-between text-[11px] font-mono text-sky-400/80 bg-sky-950/40 px-3 py-1.5 rounded-lg border border-sky-900/40 mb-3">
+                    <span class="flex items-center"><i class="fa-solid fa-hand-pointer mr-2 animate-bounce"></i>Swipe horizontally to explore all 52 weeks</span>
+                    <i class="fa-solid fa-arrows-left-right text-xs"></i>
+                </div>
+
+                <!-- 52-week Simulated Contribution Matrix with smooth mobile scrolling -->
+                <div class="overflow-x-auto touch-scroll-x pb-2.5">
                     <div id="contributionGrid" class="grid grid-rows-7 grid-flow-col gap-1 w-max">
                         <!-- Populated dynamically via JS for precision -->
                     </div>
@@ -873,8 +919,15 @@
         </div>
     </footer>
 
+    <!-- Floating Back to Top Button for mobile and desktop -->
+    <button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-full bg-slate-900/90 border border-slate-700 text-sky-400 shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-slate-800 hover:text-white active:scale-95"
+            aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+
     <!-- Interactive Toast Alert Notification -->
-    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 ease-out flex items-center space-x-3 bg-slate-900 border border-sky-500/50 text-white px-4 py-3 rounded-xl shadow-2xl">
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 ease-out flex items-center space-x-3 bg-slate-900 border border-sky-500/50 text-white px-4 py-3 rounded-xl shadow-2xl max-w-[90vw]">
         <i class="fa-solid fa-circle-check text-sky-400 text-base"></i>
         <div>
             <div class="text-xs font-bold text-white" id="toastTitle">Copied!</div>
@@ -883,6 +936,53 @@
     </div>
 
     <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById("mobileNavMenu");
+            const icon = document.getElementById("mobileMenuIcon");
+            if (!menu || !icon) return;
+
+            const isHidden = menu.classList.contains("hidden");
+            if (isHidden) {
+                menu.classList.remove("hidden");
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+            } else {
+                menu.classList.add("hidden");
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            }
+        }
+
+        // Auto close mobile menu when clicking any nav link
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileLinks = document.querySelectorAll("#mobileNavMenu a");
+            mobileLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    const menu = document.getElementById("mobileNavMenu");
+                    const icon = document.getElementById("mobileMenuIcon");
+                    if (menu) menu.classList.add("hidden");
+                    if (icon) {
+                        icon.classList.remove("fa-xmark");
+                        icon.classList.add("fa-bars");
+                    }
+                });
+            });
+
+            // Back to top scroll listener
+            const backToTopBtn = document.getElementById("backToTopBtn");
+            window.addEventListener("scroll", () => {
+                if (!backToTopBtn) return;
+                if (window.scrollY > 350) {
+                    backToTopBtn.classList.remove("opacity-0", "pointer-events-none");
+                    backToTopBtn.classList.add("opacity-100", "pointer-events-auto");
+                } else {
+                    backToTopBtn.classList.add("opacity-0", "pointer-events-none");
+                    backToTopBtn.classList.remove("opacity-100", "pointer-events-auto");
+                }
+            });
+        });
+
         // Copy Email Functionality using textarea execCommand fallback
         function copyEmailToClipboard() {
             const email = "girishlade111@gmail.com";
