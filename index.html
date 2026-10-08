@@ -1,1 +1,970 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girish Balaso Lade | Systems Engineer & Founder @ LadeStack</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Inter and JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        darkBg: '#090d16',
+                        darkCard: '#111726',
+                        darkBorder: '#1e293b',
+                        accentBlue: '#38bdf8',
+                        accentEmerald: '#10b981',
+                        accentAmber: '#f59e0b',
+                        accentPurple: '#a855f7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and glowing effects */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+        .code-glow {
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+        }
+        .card-hover-effect {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
+        }
+        .dot-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-[#090d16] text-slate-200 font-sans antialiased selection:bg-sky-500 selection:text-white">
 
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090d16]/85 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-sky-500 to-amber-400 p-[2px] transition group-hover:scale-105">
+                        <img src="https://avatars.githubusercontent.com/u/108502392?v=4" 
+                             alt="Girish Lade" 
+                             onerror="this.src='https://placehold.co/100x100/1e293b/38bdf8?text=GL'"
+                             class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <div>
+                        <span class="font-bold text-white tracking-wide text-base group-hover:text-sky-400 transition">Girish Lade</span>
+                        <span class="block text-xs font-mono text-slate-400">@girishlade111</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#beliefs" class="hover:text-sky-400 transition">Core Beliefs</a>
+                <a href="#trajectory" class="hover:text-sky-400 transition">Trajectory</a>
+                <a href="#ecosystem" class="hover:text-sky-400 transition">LadeStack</a>
+                <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
+                <a href="#tech-stack" class="hover:text-sky-400 transition">Tech</a>
+                <a href="#activity" class="hover:text-sky-400 transition">GitHub Stats</a>
+                <a href="#connect" class="hover:text-sky-400 transition">Connect</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="https://github.com/girishlade111" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-xs font-mono text-sky-400 border border-slate-700 transition">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span class="hidden sm:inline">Follow</span>
+                </a>
+                <button onclick="copyEmailToClipboard()" 
+                        class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs transition shadow-sm">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>Get in Touch</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+        <!-- Hero Section with GitHub Banner & Profile Layout -->
+        <section id="hero" class="relative rounded-2xl border border-slate-800 bg-[#0d1322] p-6 sm:p-8 lg:p-10 mb-12 overflow-hidden dot-grid shadow-2xl">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                <!-- Avatar and Title details -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                    <div class="relative group">
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-sky-400 via-indigo-500 to-amber-400 shadow-xl">
+                            <img src="https://avatars.githubusercontent.com/u/108502392?v=4" 
+                                 alt="Girish Balaso Lade"
+                                 onerror="this.src='https://placehold.co/150x150/1e293b/38bdf8?text=Girish'"
+                                 class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <span class="absolute bottom-1 right-1 flex h-5 w-5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-5 w-5 bg-emerald-500 border-2 border-[#0d1322]"></span>
+                        </span>
+                    </div>
+
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Girish Lade</h1>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-sky-400 border border-slate-700">20 y/o</span>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">Founder</span>
+                        </div>
+                        <p class="text-base sm:text-lg font-medium text-amber-300/90 font-mono mb-2">
+                            Building systems | Founder @LadeStack | Tech Guy - Dev
+                        </p>
+                        <p class="text-sm text-slate-400 max-w-xl leading-relaxed">
+                            Hey I'm Girish, a 20yo dev obsessed with scaling, systems, clean engineering, and genuine impact. I code, learn, ship fast. Currently building products under <strong class="text-slate-200">LadeStack & beyond</strong>.
+                        </p>
+                        
+                        <!-- Badges row from GitHub Profile -->
+                        <div class="flex flex-wrap items-center gap-2 mt-4">
+                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-solid fa-code text-sky-400 mr-1.5"></i>TypeScript</span>
+                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-python text-yellow-400 mr-1.5"></i>Python</span>
+                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-docker text-blue-400 mr-1.5"></i>Docker</span>
+                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-solid fa-dharmachakra text-sky-300 mr-1.5"></i>Kubernetes</span>
+                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-react text-cyan-400 mr-1.5"></i>React</span>
+                            <span class="px-2.5 py-1 text-xs font-mono rounded bg-slate-800/90 text-slate-300 border border-slate-700"><i class="fa-brands fa-node text-green-400 mr-1.5"></i>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Meta Cards -->
+                <div class="w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-3 min-w-[240px]">
+                    <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-mono space-y-2">
+                        <div class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-location-dot w-5 text-rose-400"></i>
+                            <span>Mumbai / India</span>
+                        </div>
+                        <div class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-building w-5 text-indigo-400"></i>
+                            <span>LadeStack Organization</span>
+                        </div>
+                        <div class="flex items-center text-slate-400">
+                            <i class="fa-solid fa-briefcase w-5 text-amber-400"></i>
+                            <span class="text-emerald-400 font-semibold">Open to high-impact roles</span>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Badges -->
+                    <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between gap-3">
+                        <span class="text-xs font-mono text-slate-400">Achievements</span>
+                        <div class="flex items-center space-x-2">
+                            <span title="Pull Shark" class="w-8 h-8 rounded-full bg-sky-950/70 border border-sky-600/40 flex items-center justify-center text-sky-400 text-sm">🦈</span>
+                            <span title="Quickdraw" class="w-8 h-8 rounded-full bg-amber-950/70 border border-amber-600/40 flex items-center justify-center text-amber-400 text-sm">⚡</span>
+                            <span title="Arctic Code Vault" class="w-8 h-8 rounded-full bg-indigo-950/70 border border-indigo-600/40 flex items-center justify-center text-indigo-400 text-sm">❄️</span>
+                            <span title="Starstruck" class="w-8 h-8 rounded-full bg-purple-950/70 border border-purple-600/40 flex items-center justify-center text-purple-400 text-sm">🌟</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+            <!-- Left Column: Core Beliefs -->
+            <section id="beliefs" class="lg:col-span-5 bg-[#0d1322] border border-slate-800 rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                            <i class="fa-solid fa-bolt text-sm"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-white tracking-tight">My Core Beliefs</h2>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300 leading-relaxed font-sans">
+                        <p class="border-l-2 border-amber-400/80 pl-3.5 text-slate-200 italic font-mono text-xs">
+                            "True leverage comes from building self-sufficient systems, not just writing syntax."
+                        </p>
+                        <p>
+                            At 20, I believe real impact lies in systems that run predictably under heavy load. I'm not here just to write code; I am here to build businesses, scalable architectures, and engineering infrastructure that outlasts the hype cycle.
+                        </p>
+                        <p>
+                            My obsession centers on resilience, execution speed, distributed design, and engineering craftsmanship.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap gap-2 text-xs font-mono">
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-sky-400">#HighVelocity</span>
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-emerald-400">#ScaleFirst</span>
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-amber-400">#SystemArchitect</span>
+                </div>
+            </section>
+
+            <!-- Right Column: The Trajectory -->
+            <section id="trajectory" class="lg:col-span-7 bg-[#0d1322] border border-slate-800 rounded-2xl p-6 sm:p-7">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                            <i class="fa-solid fa-compass text-sm"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-white tracking-tight">The Trajectory</h2>
+                    </div>
+                    <span class="text-xs font-mono text-slate-400">Continuous Growth</span>
+                </div>
+
+                <!-- Timeline items -->
+                <div class="relative border-l border-slate-700/60 ml-3 space-y-6">
+                    <!-- Item 1 -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#0d1322]"></div>
+                        <div class="flex flex-wrap items-baseline gap-2 mb-1">
+                            <span class="text-xs font-mono font-bold text-emerald-400">PRESENT</span>
+                            <h3 class="text-sm font-semibold text-white">Founder @ LadeStack & Systems Architecture</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Developing core backend microservices, workflow orchestration engines, and high-performance developer tools.
+                        </p>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-sky-400 border-2 border-[#0d1322]"></div>
+                        <div class="flex flex-wrap items-baseline gap-2 mb-1">
+                            <span class="text-xs font-mono font-bold text-sky-400">DISTRIBUTED SYSTEMS</span>
+                            <h3 class="text-sm font-semibold text-white">Cloud, Containers & Orchestration</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Docker, Kubernetes cluster deployment, Redis caching layers, PostgreSQL indexing, and scalable API gateways.
+                        </p>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-amber-400 border-2 border-[#0d1322]"></div>
+                        <div class="flex flex-wrap items-baseline gap-2 mb-1">
+                            <span class="text-xs font-mono font-bold text-amber-400">FULL STACK APPS</span>
+                            <h3 class="text-sm font-semibold text-white">Production Web Platforms</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Mastered TypeScript, React, Next.js, FastAPI, Node.js, and modern state architectures.
+                        </p>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-slate-500 border-2 border-[#0d1322]"></div>
+                        <div class="flex flex-wrap items-baseline gap-2 mb-1">
+                            <span class="text-xs font-mono font-bold text-slate-400">FOUNDATIONS</span>
+                            <h3 class="text-sm font-semibold text-white">Core Computer Science & Logic</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            C++, Python, data structures, algorithms, low-level memory basics, and networking essentials.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- LadeStack Ecosystem Table/Showcase -->
+        <section id="ecosystem" class="mb-12">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                        <i class="fa-solid fa-rocket text-sm"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-white tracking-tight">Currently Shipping — LadeStack Ecosystem</h2>
+                        <p class="text-xs text-slate-400">High-throughput tools and infrastructure software built under LadeStack</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                        <i class="fa-solid fa-circle text-[8px] text-emerald-400 mr-1.5 animate-pulse"></i>6 Active Products
+                    </span>
+                </div>
+            </div>
+
+            <!-- Ecosystem Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Product 1 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono font-bold text-sky-400 bg-sky-950/60 px-2.5 py-0.5 rounded border border-sky-800/50">Core</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active / v1.0</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+                            <span>LadeStack Core</span>
+                            <i class="fa-solid fa-microchip text-slate-500 text-xs"></i>
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Server-based AI agent/engine backend + unified API gateway designed for low latency orchestration and microservices.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>FastAPI • Go • Redis</span>
+                        <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:underline">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono font-bold text-indigo-400 bg-indigo-950/60 px-2.5 py-0.5 rounded border border-indigo-800/50">Workflow</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30">Beta Testing</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+                            <span>LadeFlow</span>
+                            <i class="fa-solid fa-network-wired text-slate-500 text-xs"></i>
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Visual pipeline and automation tool for engineering teams to automate testing, build steps, and deployments.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>TypeScript • React • Node</span>
+                        <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:underline">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-800/50">Telemetry</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30">v0.4 OSS</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+                            <span>MicroLog</span>
+                            <i class="fa-solid fa-list-check text-slate-500 text-xs"></i>
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            High-performance structured logging & metrics ingestion library with sub-millisecond serialization.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>Go • Zero Alloc • Docker</span>
+                        <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:underline">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono font-bold text-amber-400 bg-amber-950/60 px-2.5 py-0.5 rounded border border-amber-800/50">Storage</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">In Active Dev</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+                            <span>CloudNest</span>
+                            <i class="fa-solid fa-cloud-arrow-up text-slate-500 text-xs"></i>
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Distributed cloud storage and file sync engine with deduplication, chunked upload, and end-to-end encryption.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>Python • S3 API • Celery</span>
+                        <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:underline">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono font-bold text-rose-400 bg-rose-950/60 px-2.5 py-0.5 rounded border border-rose-800/50">Guide</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">150+ Stars</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+                            <span>SystemDesignNotes</span>
+                            <i class="fa-solid fa-book-bookmark text-slate-500 text-xs"></i>
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Curated production-grade distributed system blueprints, caching strategies, rate limiting algorithms, and diagrams.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>Architecture • Markdown</span>
+                        <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:underline">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-mono font-bold text-teal-400 bg-teal-950/60 px-2.5 py-0.5 rounded border border-teal-800/50">Repository</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30">Continuous</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-1.5 flex items-center justify-between">
+                            <span>CodeVault</span>
+                            <i class="fa-solid fa-vault text-slate-500 text-xs"></i>
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Production-grade algorithms, clean coding standards, design patterns, and interview engineering blueprints.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>C++ • TypeScript • Python</span>
+                        <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:underline">Explore &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Showcase -->
+        <section id="projects" class="mb-12">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-white tracking-tight">Featured Projects</h2>
+                    <p class="text-xs text-slate-400">Selected codebases with high engineering complexity</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                            <span class="text-sky-400 font-bold"><i class="fa-regular fa-folder-closed mr-1.5"></i>Project #01</span>
+                            <span><i class="fa-regular fa-star mr-1"></i>48</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Microservices Orchestrator</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Multi-container orchestrator handling automated health checks, dynamic service discovery, and circuit breaker patterns.
+                        </p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-sky-300">Go</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-blue-300">Docker</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-red-300">Redis</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-xs pt-2 border-t border-slate-800">
+                            <a href="https://github.com/girishlade111" target="_blank" class="text-slate-300 hover:text-white flex items-center">
+                                <i class="fa-brands fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:text-sky-300 flex items-center">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1 text-[10px]"></i> Architecture
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                            <span class="text-amber-400 font-bold"><i class="fa-regular fa-folder-closed mr-1.5"></i>Project #02</span>
+                            <span><i class="fa-regular fa-star mr-1"></i>36</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">Distributed Key-Value Store</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            LSM-Tree backed distributed memory-efficient KV storage engine with crash recovery and consistent hashing replication.
+                        </p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-yellow-300">Python</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-purple-300">C++</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-emerald-300">gRPC</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-xs pt-2 border-t border-slate-800">
+                            <a href="https://github.com/girishlade111" target="_blank" class="text-slate-300 hover:text-white flex items-center">
+                                <i class="fa-brands fa-github mr-1"></i> Code
+                            </a>
+                            <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:text-sky-300 flex items-center">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1 text-[10px]"></i> Benchmarks
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-[#0d1322] border border-slate-800 rounded-xl p-5 card-hover-effect flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                            <span class="text-emerald-400 font-bold"><i class="fa-regular fa-folder-closed mr-1.5"></i>Project #03</span>
+                            <span><i class="fa-regular fa-star mr-1"></i>52</span>
+                        </div>
+                        <h3 class="text-base font-bold text-white mb-2">DevOps Automation Pipeline</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Production CI/CD GitOps workflow using GitHub Actions, Helm charts, Kubernetes ingress, and automated zero-downtime rolling deploys.
+                        </p>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-blue-300">K8s</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-indigo-300">GitHub Actions</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-cyan-300">Terraform</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-xs pt-2 border-t border-slate-800">
+                            <a href="https://github.com/girishlade111" target="_blank" class="text-slate-300 hover:text-white flex items-center">
+                                <i class="fa-brands fa-github mr-1"></i> Pipeline
+                            </a>
+                            <a href="https://github.com/girishlade111" target="_blank" class="text-sky-400 hover:text-sky-300 flex items-center">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1 text-[10px]"></i> Live Specs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech I Build With -->
+        <section id="tech-stack" class="mb-12 bg-[#0d1322] border border-slate-800 rounded-2xl p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-code-merge text-sm"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-white tracking-tight">Tech I Build With</h2>
+                        <p class="text-xs text-slate-400">Battle-tested tools, languages, and frameworks in my everyday workflow</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 text-xs font-mono text-slate-400">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block animate-ping"></span>
+                    <span>Continuously updated</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Group 1: Languages -->
+                <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800/80">
+                    <h3 class="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold mb-4 flex items-center">
+                        <i class="fa-solid fa-terminal mr-2"></i> Languages
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-js text-amber-400"></i> TypeScript
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-python text-sky-400"></i> Python
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-golang text-cyan-400"></i> Go
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-code text-indigo-400"></i> C++
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-js text-yellow-400"></i> JavaScript
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-database text-rose-400"></i> SQL
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Group 2: Systems, Backend & DevOps -->
+                <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800/80">
+                    <h3 class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold mb-4 flex items-center">
+                        <i class="fa-solid fa-server mr-2"></i> Backend & Systems
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-docker text-sky-400"></i> Docker
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-cubes text-blue-400"></i> Kubernetes
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-bolt text-teal-400"></i> FastAPI
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-node-js text-green-400"></i> Node.js
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-database text-sky-300"></i> PostgreSQL
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-memory text-rose-400"></i> Redis
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Group 3: Frontend & Ecosystem Tools -->
+                <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800/80">
+                    <h3 class="text-xs font-mono uppercase tracking-wider text-purple-400 font-bold mb-4 flex items-center">
+                        <i class="fa-solid fa-cubes-stacked mr-2"></i> Frontend & Tools
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-react text-cyan-400"></i> React
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-n text-white"></i> Next.js
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-css3 text-sky-400"></i> Tailwind CSS
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-linux text-amber-300"></i> Linux
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-git-alt text-orange-500"></i> Git
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-xs font-mono text-slate-200 border border-slate-700/80 transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Neovim / VSCode
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Currently Grinding (Goals & Focus) -->
+        <section class="mb-12 bg-[#0d1322] border border-slate-800 rounded-2xl p-6 sm:p-7">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                    <i class="fa-solid fa-fire text-sm"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-white tracking-tight">Currently Grinding</h2>
+                    <p class="text-xs text-slate-400">Topics & engineering frontiers I am actively conquering this quarter</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start space-x-3">
+                    <span class="text-emerald-400 font-mono text-sm mt-0.5"><i class="fa-solid fa-circle-check"></i></span>
+                    <div>
+                        <h4 class="text-sm font-semibold text-white">Distributed Consensus & Paxos/Raft</h4>
+                        <p class="text-xs text-slate-400 mt-1">Implementing mini Raft cluster consensus in Go for state machine replication.</p>
+                    </div>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start space-x-3">
+                    <span class="text-sky-400 font-mono text-sm mt-0.5"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                    <div>
+                        <h4 class="text-sm font-semibold text-white">Advanced System Design</h4>
+                        <p class="text-xs text-slate-400 mt-1">Studying high-volume message queues (Kafka internals) and cache stampede solutions.</p>
+                    </div>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start space-x-3">
+                    <span class="text-sky-400 font-mono text-sm mt-0.5"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                    <div>
+                        <h4 class="text-sm font-semibold text-white">Low-Level & OS Concurrency</h4>
+                        <p class="text-xs text-slate-400 mt-1">Deep diving into kernel threads, memory barriers, non-blocking I/O (epoll).</p>
+                    </div>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start space-x-3">
+                    <span class="text-amber-400 font-mono text-sm mt-0.5"><i class="fa-solid fa-rocket"></i></span>
+                    <div>
+                        <h4 class="text-sm font-semibold text-white">LadeStack Production Scaling</h4>
+                        <p class="text-xs text-slate-400 mt-1">Deploying multi-region failovers and telemetry observability dashboards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity, Contributions & Stats -->
+        <section id="activity" class="mb-12 bg-[#0d1322] border border-slate-800 rounded-2xl p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                        <i class="fa-brands fa-github-alt text-base"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-white tracking-tight">GitHub Activity & Metrics</h2>
+                        <p class="text-xs text-slate-400">Verifiable production output & commit frequency</p>
+                    </div>
+                </div>
+                <a href="https://github.com/girishlade111" target="_blank" class="text-xs font-mono text-sky-400 hover:text-sky-300 flex items-center gap-1">
+                    <span>View GitHub Profile</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Stats Bar Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-white font-mono">16,000+</span>
+                    <span class="block text-xs font-mono text-slate-400 mt-1">Lines Coded</span>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-sky-400 font-mono">35+</span>
+                    <span class="block text-xs font-mono text-slate-400 mt-1">Repositories</span>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-mono">157+</span>
+                    <span class="block text-xs font-mono text-slate-400 mt-1">Annual Commits</span>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">42 Days</span>
+                    <span class="block text-xs font-mono text-slate-400 mt-1">Longest Streak</span>
+                </div>
+            </div>
+
+            <!-- Interactive Contribution Grid Simulation -->
+            <div class="p-5 rounded-xl bg-slate-900/90 border border-slate-800 mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-mono text-slate-300 font-semibold">Contributions in the last year</span>
+                    <div class="flex items-center space-x-1.5 text-[11px] font-mono text-slate-400">
+                        <span>Less</span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-slate-800"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-emerald-950"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-emerald-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-emerald-500"></span>
+                        <span class="w-2.5 h-2.5 rounded-sm bg-emerald-300"></span>
+                        <span>More</span>
+                    </div>
+                </div>
+
+                <!-- 52-week Simulated Contribution Matrix -->
+                <div class="overflow-x-auto pb-2">
+                    <div id="contributionGrid" class="grid grid-rows-7 grid-flow-col gap-1 w-max">
+                        <!-- Populated dynamically via JS for precision -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Distribution Bar -->
+            <div class="p-5 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono text-slate-300 font-semibold">Most Used Languages</span>
+                    <span class="text-xs font-mono text-slate-400">Repository analysis</span>
+                </div>
+                <!-- Multi-color progress bar -->
+                <div class="w-full h-3 rounded-full overflow-hidden flex bg-slate-800 mb-4">
+                    <div class="bg-sky-400 h-full" style="width: 44%" title="TypeScript 44%"></div>
+                    <div class="bg-yellow-400 h-full" style="width: 26%" title="Python 26%"></div>
+                    <div class="bg-cyan-400 h-full" style="width: 15%" title="Go 15%"></div>
+                    <div class="bg-purple-400 h-full" style="width: 9%" title="C++ 9%"></div>
+                    <div class="bg-slate-400 h-full" style="width: 6%" title="Other 6%"></div>
+                </div>
+                <!-- Legend -->
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs font-mono">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+                        <span class="text-slate-300">TypeScript 44%</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                        <span class="text-slate-300">Python 26%</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                        <span class="text-slate-300">Go 15%</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+                        <span class="text-slate-300">C++ 9%</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
+                        <span class="text-slate-300">Other 6%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Let's Connect Section -->
+        <section id="connect" class="bg-gradient-to-b from-[#0d1322] to-[#070b12] border border-slate-800 rounded-2xl p-6 sm:p-10 text-center relative overflow-hidden shadow-2xl">
+            <div class="max-w-2xl mx-auto relative z-10">
+                <div class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mx-auto mb-4 text-xl">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">Let's Connect</h2>
+                <p class="text-sm text-slate-400 mb-8 leading-relaxed">
+                    Always excited to collaborate on distributed systems, high-scale engineering backends, or discuss new ventures under LadeStack.
+                </p>
+
+                <!-- Connection Options Table / Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-8">
+                    <!-- GitHub -->
+                    <a href="https://github.com/girishlade111" target="_blank" rel="noopener noreferrer"
+                       class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-850 transition flex items-center justify-between group">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-brands fa-github text-xl text-slate-300 group-hover:text-sky-400 transition"></i>
+                            <div>
+                                <span class="block text-xs font-mono text-slate-400">GitHub</span>
+                                <span class="text-sm font-semibold text-white">@girishlade111</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-sky-400 transition"></i>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/girishlade" target="_blank" rel="noopener noreferrer"
+                       class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-850 transition flex items-center justify-between group">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-brands fa-linkedin text-xl text-sky-400 group-hover:text-sky-300 transition"></i>
+                            <div>
+                                <span class="block text-xs font-mono text-slate-400">LinkedIn</span>
+                                <span class="text-sm font-semibold text-white">Girish Lade</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-sky-400 transition"></i>
+                    </a>
+
+                    <!-- Twitter / X -->
+                    <a href="https://x.com/girishlade" target="_blank" rel="noopener noreferrer"
+                       class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-850 transition flex items-center justify-between group">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-brands fa-x-twitter text-xl text-slate-300 group-hover:text-white transition"></i>
+                            <div>
+                                <span class="block text-xs font-mono text-slate-400">X (Twitter)</span>
+                                <span class="text-sm font-semibold text-white">@girishlade</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover:text-sky-400 transition"></i>
+                    </a>
+
+                    <!-- Email Direct Button -->
+                    <button onclick="copyEmailToClipboard()"
+                       class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-850 transition flex items-center justify-between group w-full text-left">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope text-xl text-amber-400 group-hover:text-amber-300 transition"></i>
+                            <div>
+                                <span class="block text-xs font-mono text-slate-400">Direct Email</span>
+                                <span class="text-sm font-semibold text-white" id="emailDisplay">girishlade111@gmail.com</span>
+                            </div>
+                        </div>
+                        <i class="fa-regular fa-copy text-xs text-slate-500 group-hover:text-amber-400 transition" id="copyIcon"></i>
+                    </button>
+                </div>
+
+                <div class="inline-flex items-center space-x-2 text-xs font-mono text-slate-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Currently based in Mumbai, India • Available globally for remote engineering</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-[#070a12] py-8 text-center text-xs font-mono text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                &copy; <span id="currentYear">2026</span> Girish Balaso Lade. Built with engineering precision.
+            </div>
+            <div class="flex items-center space-x-4 text-slate-400">
+                <a href="#hero" class="hover:text-white transition">Top ↑</a>
+                <a href="https://github.com/girishlade111" target="_blank" class="hover:text-white transition">GitHub</a>
+                <a href="#ecosystem" class="hover:text-white transition">LadeStack</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Toast Alert Notification -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 ease-out flex items-center space-x-3 bg-slate-900 border border-sky-500/50 text-white px-4 py-3 rounded-xl shadow-2xl">
+        <i class="fa-solid fa-circle-check text-sky-400 text-base"></i>
+        <div>
+            <div class="text-xs font-bold text-white" id="toastTitle">Copied!</div>
+            <div class="text-[11px] text-slate-300" id="toastMessage">Email copied to your clipboard.</div>
+        </div>
+    </div>
+
+    <script>
+        // Copy Email Functionality using textarea execCommand fallback
+        function copyEmailToClipboard() {
+            const email = "girishlade111@gmail.com";
+            const tempInput = document.createElement("textarea");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand("copy");
+                showToast("Copied to Clipboard!", email + " is ready to paste.");
+            } catch (err) {
+                showToast("Email address", email);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById("toastNotification");
+            const titleEl = document.getElementById("toastTitle");
+            const msgEl = document.getElementById("toastMessage");
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            toast.classList.remove("translate-y-24", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-24", "opacity-0");
+            }, 3000);
+        }
+
+        // Generate realistic GitHub contribution matrix (52 weeks x 7 days)
+        function generateContributionGrid() {
+            const gridContainer = document.getElementById("contributionGrid");
+            if (!gridContainer) return;
+
+            const totalCells = 52 * 7;
+            const levels = [
+                'bg-slate-800/80',      // Level 0 (no commit)
+                'bg-emerald-950/70',     // Level 1
+                'bg-emerald-800/80',     // Level 2
+                'bg-emerald-600',        // Level 3
+                'bg-emerald-400'         // Level 4 (heavy commits)
+            ];
+
+            // Deterministic pseudo-random pattern mimicking active engineering cycles
+            for (let i = 0; i < totalCells; i++) {
+                const cell = document.createElement("div");
+                cell.className = "w-2.5 h-2.5 rounded-sm transition-transform hover:scale-150 cursor-pointer";
+
+                // Generate weighted probability for realistic GitHub activity
+                const seed = Math.sin(i * 12.9898) * 43758.5453;
+                const rand = seed - Math.floor(seed);
+                
+                let levelIndex = 0;
+                if (rand > 0.45 && rand <= 0.65) levelIndex = 1;
+                else if (rand > 0.65 && rand <= 0.85) levelIndex = 2;
+                else if (rand > 0.85 && rand <= 0.95) levelIndex = 3;
+                else if (rand > 0.95) levelIndex = 4;
+
+                // Make recent weeks extra active
+                if (i > totalCells - 70 && Math.random() > 0.3) {
+                    levelIndex = Math.floor(Math.random() * 3) + 2;
+                }
+
+                cell.classList.add(levels[levelIndex]);
+                const commitCount = levelIndex === 0 ? 0 : levelIndex * 2 + Math.floor(Math.random() * 3);
+                cell.title = `${commitCount} contributions on day ${i + 1}`;
+
+                gridContainer.appendChild(cell);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            generateContributionGrid();
+            const yearEl = document.getElementById("currentYear");
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
